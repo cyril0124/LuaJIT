@@ -1590,6 +1590,8 @@ static void asm_mul(ASMState *as, IRIns *ir)
 #define asm_abs(as, ir)		asm_fpunary(as, ir, ARMI_VABS_D)
 #endif
 
+#define asm_idiv(as, ir)		asm_callid(as, ir, IRCALL_lj_vm_idivi)
+
 static void asm_neg(ASMState *as, IRIns *ir)
 {
 #if !LJ_SOFTFP

@@ -1818,7 +1818,7 @@ static void asm_ir(ASMState *as, IRIns *ir)
   case IR_MOD: asm_mod(as, ir); break;
   case IR_NEG: asm_neg(as, ir); break;
 #if LJ_SOFTFP32
-  case IR_DIV: case IR_POW: case IR_ABS:
+  case IR_DIV: case IR_IDIV: case IR_POW: case IR_ABS:
   case IR_LDEXP: case IR_FPMATH: case IR_TOBIT:
     /* Unused for LJ_SOFTFP32. */
     lj_assertA(0, "IR %04d with unused op %d",
@@ -1826,6 +1826,7 @@ static void asm_ir(ASMState *as, IRIns *ir)
     break;
 #else
   case IR_DIV: asm_div(as, ir); break;
+  case IR_IDIV: asm_idiv(as, ir); break;
   case IR_POW: asm_pow(as, ir); break;
   case IR_ABS: asm_abs(as, ir); break;
   case IR_LDEXP: asm_ldexp(as, ir); break;
